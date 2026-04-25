@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medios de comunicación y cultura tributaria</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #12365c 0%, #07111f 42%, #030712 100%);
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .container { width: min(1180px, 100%); margin: 0 auto; }
+    header {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 42px;
+      align-items: end;
+    }
+    .tag {
+      display: inline-block;
+      padding: 8px 13px;
+      border: 1px solid rgba(56,189,248,0.35);
+      border-radius: 999px;
+      color: #bae6fd;
+      background: rgba(56,189,248,0.11);
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      margin: 0;
+      letter-spacing: -0.06em;
+    }
+    .subtitle {
+      margin-top: 26px;
+      max-width: 760px;
+      font-size: 1.18rem;
+      color: #cbd5e1;
+    }
+    .qr-box {
+      border: 1px dashed rgba(255,255,255,0.38);
+      border-radius: 28px;
+      padding: 24px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+    .qr-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 250px;
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      background: #fff;
+      color: #0f172a;
+      text-align: center;
+      font-weight: 700;
+      padding: 18px;
+    }
+    .qr-box p { color: #cbd5e1; margin: 0; font-size: 0.95rem; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(3,7,18,0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+    nav .container {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 12px 22px;
+    }
+    nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: #e0f2fe;
+      font-size: 0.92rem;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    section {
+      padding: 78px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+    .section-head { margin-bottom: 42px; max-width: 920px; }
+    .eyebrow {
+      color: #a7f3d0;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.05;
+      margin: 0;
+      letter-spacing: -0.045em;
+    }
+    .lead {
+      margin-top: 20px;
+      color: #cbd5e1;
+      font-size: 1.08rem;
+      max-width: 840px;
+    }
+    .chart-block {
+      display: grid;
+      grid-template-columns: 0.38fr 0.62fr;
+      gap: 28px;
+      align-items: start;
+      margin: 34px 0;
+    }
+    .chart-text {
+      position: sticky;
+      top: 82px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 24px;
+    }
+    .chart-text h3 { margin: 0 0 12px; font-size: 1.45rem; line-height: 1.2; }
+    .chart-text p { color: #cbd5e1; margin: 0; }
+    .chart-card {
+      background: white;
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.32);
+      overflow: hidden;
+    }
+    .stable-chart {
+      min-height: 544px;
+    }
+    .stable-chart iframe {
+      height: 520px !important;
+    }
+    iframe {
+      display: block;
+      width: 100%;
+      min-width: 100% !important;
+      border: none;
+      background: white;
+    }
+    .conclusion {
+      margin-top: 46px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.16), rgba(167,243,208,0.09));
+      border: 1px solid rgba(125,211,252,0.25);
+    }
+    .conclusion h3 { margin: 0 0 12px; font-size: 1.4rem; }
+    .conclusion ul { margin: 0; padding-left: 20px; color: #e2e8f0; }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+    .strategy-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 22px;
+    }
+    .strategy-card h3 { margin: 0 0 10px; color: #d9f99d; }
+    .strategy-card p { color: #cbd5e1; margin: 0; }
+    .strategy-card ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #cbd5e1;
+    }
+    .strategy-card li {
+      margin-bottom: 10px;
+    }
+    .strategy-card strong {
+      color: #f8fafc;
+    }
+    footer {
+      padding: 54px 22px;
+      text-align: center;
+      color: #cbd5e1;
+      background: #020617;
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .chart-block, .strategy-grid { grid-template-columns: 1fr; }
+      header { min-height: auto; }
+      .chart-text { position: sticky; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">Presentación web · Cultura tributaria y comunicación</span>
+      <h1>Medios de comunicación y cultura tributaria</h1>
+      <p class="subtitle">Cómo y dónde se informan los jóvenes, qué canales condicionan su relación con la actualidad y por qué esto importa para comunicar mejor los impuestos, el gasto público y la responsabilidad fiscal.</p>
+    </div>
+    <aside class="qr-box">
+      <div class="qr-placeholder" style="padding:8px;background:#fff;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAPoCAIAAACWiKzAAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO3dS47kSBAFQWf//2f2Q6gM3o4S4cV6JcQh0t6x9iQw6m7x0mQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="QR descarga" style="width:100%;height:auto;border-radius:16px;display:block;" /></div>
+      <p>Añade aquí el código QR que permita descargar o abrir esta presentación desde el móvil.</p>
+    </aside>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <a href="#indice">Índice</a>
+    <a href="#como-se-informan">Cómo se informan</a>
+    <a href="#canales">Qué canales utilizan</a>
+    <a href="#ia-influencers">Influencers e IA</a>
+    <a href="#otros-datos">Otros datos</a>
+    <a href="#mensaje">Medio y mensaje</a>
+    <a href="#cierre">Cierre</a>
+  </div>
+</nav>
+
+<section id="indice">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Índice</p>
+      <h2>Recorrido de la presentación</h2>
+      <p class="lead">La presentación avanza desde los hábitos generales de información juvenil hasta las implicaciones comunicativas para hablar de fiscalidad y cultura tributaria.</p>
+    </div>
+    <div class="strategy-grid">
+      <div class="strategy-card"><h3>1. Cómo se informan</h3><p>Fuentes principales, acceso directo y frecuencia de consumo.</p></div>
+      <div class="strategy-card"><h3>2. Qué canales utilizan</h3><p>Formatos, redes sociales, TikTok, vídeo y podcasts.</p></div>
+      <div class="strategy-card"><h3>3. Influencers e IA</h3><p>Nuevos intermediarios, confianza y verificación.</p></div>
+      <div class="strategy-card"><h3>4. Otros datos</h3><p>Redes sociales, desinformación, TikTok, Twitch, livestreaming político y politainment.</p></div>
+      <div class="strategy-card"><h3>5. Medio y mensaje</h3><p>Estrategias para adaptar la comunicación fiscal.</p></div>
+      <div class="strategy-card"><h3>6. Conclusión</h3><p>Ideas finales para comunicar mejor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-se-informan">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Primera sección</p>
+      <h2>CÓMO SE INFORMAN LOS JÓVENES</h2>
+      <p class="lead">Para comprender la cultura tributaria de los jóvenes, primero hay que observar su dieta informativa: qué fuentes consideran principales, cómo llegan a las noticias y con qué frecuencia consumen actualidad.</p>
+    </div>
+
+    <div class="chart-block"><div class="chart-text"><h3>1. Fuente principal de noticias</h3><p>Este gráfico permite situar el punto de partida: los jóvenes de 18 a 24 años no necesariamente se informan por los mismos canales que generaciones anteriores.</p></div><div class="chart-card"><iframe title="Proportion of 18–24s that say each is their main source of news" src="https://datawrapper.dwcdn.net/Bgr5B/3/" height="596"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>2. Acceso directo a medios digitales</h3><p>Aquí se observa si los usuarios llegan a las noticias entrando directamente en webs o aplicaciones de medios, o si ganan peso los intermediarios digitales.</p></div><div class="chart-card"><iframe title="Direct to publisher website or app" src="https://datawrapper.dwcdn.net/8uJKq/3/" height="643"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>3. Acceso diario a noticias</h3><p>Este gráfico ayuda a medir la intensidad del contacto con la actualidad: no solo importa dónde se informan, sino con qué frecuencia.</p></div><div class="chart-card"><iframe title="Access news daily" src="https://datawrapper.dwcdn.net/CNpjt/2/" height="591"></iframe></div></div>
+
+    <div class="conclusion"><h3>Conclusiones de la sección</h3><ul><li>La información juvenil se mueve en un ecosistema cada vez más digital, móvil e intermediado.</li><li>El acceso directo a medios tradicionales pierde centralidad frente a plataformas y recomendaciones.</li><li>Para hablar de impuestos hay que adaptarse a los lugares donde los jóvenes realmente se informan.</li></ul></div>
+  </div>
+</section>
+
+<section id="canales">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Segunda sección</p>
+      <h2>QUÉ CANALES UTILIZAN</h2>
+      <p class="lead">Esta sección analiza los formatos y plataformas concretas que estructuran el consumo informativo: lectura, vídeo, audio, redes sociales, TikTok, plataformas audiovisuales y podcasts.</p>
+    </div>
+
+    <div class="chart-block"><div class="chart-text"><h3>1. Leer, ver o escuchar noticias</h3><p>El formato importa: una noticia leída, vista en vídeo o escuchada en audio genera experiencias diferentes.</p></div><div class="chart-card stable-chart"><iframe class="no-resize" title="Reading watching or listening" src="https://datawrapper.dwcdn.net/6cP4q/4/" height="520"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>2. Redes y plataformas usadas para noticias</h3><p>Cada plataforma tiene sus propias reglas: duración, tono, viralidad, interacción y grado de contexto.</p></div><div class="chart-card"><iframe title="18-24s used each for news" src="https://datawrapper.dwcdn.net/YodZg/4/" height="689"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>3. Uso de TikTok</h3><p>TikTok mezcla entretenimiento, opinión e información, lo que plantea retos para explicar asuntos fiscales sin perder precisión.</p></div><div class="chart-card"><iframe title="TikTok usage" src="https://datawrapper.dwcdn.net/bk657/3/" height="563"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>4. Redes sociales y vídeo</h3><p>El mensaje público debe circular en espacios donde ya existe conversación, no solo en canales institucionales.</p></div><div class="chart-card"><iframe title="Top social and video networks" src="https://datawrapper.dwcdn.net/k7wpK/2/" height="491"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>5. Podcasts de noticias</h3><p>El podcast permite más contexto y conversación pausada, útil para desmontar mitos fiscales.</p></div><div class="chart-card"><iframe title="News podcast last month" src="https://datawrapper.dwcdn.net/dlNf0/2/" height="639"></iframe></div></div>
+
+    <div class="conclusion"><h3>Conclusiones de la sección</h3><ul><li>Los jóvenes combinan texto, vídeo, redes, plataformas y audio.</li><li>Las redes sociales también funcionan como puerta de entrada a la información.</li><li>La educación fiscal necesita vídeos breves, explicadores visuales, podcasts y contenidos verificables.</li></ul></div>
+  </div>
+</section>
+
+<section id="ia-influencers">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Tercera sección</p>
+      <h2>INFLUENCERS E INTELIGENCIA ARTIFICIAL</h2>
+      <p class="lead">Influencers, creadores, plataformas y herramientas de inteligencia artificial modifican la forma en que se descubre, interpreta y verifica la actualidad.</p>
+    </div>
+
+    <div class="chart-block"><div class="chart-text"><h3>1. A quién se presta atención en plataformas</h3><p>Si creadores e influencers ganan peso, también influyen en cómo se perciben debates públicos como el pago de impuestos.</p></div><div class="chart-card"><iframe title="Attention on platforms" src="https://datawrapper.dwcdn.net/opuhQ/2/" height="691"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>2. Usos de IA aplicados a noticias</h3><p>La IA puede servir para resumir, explicar o personalizar información, aunque también plantea dudas sobre fiabilidad y sesgo.</p></div><div class="chart-card"><iframe title="AI use cases for news" src="https://datawrapper.dwcdn.net/Orw2s/3/" height="439"></iframe></div></div>
+    <div class="chart-block"><div class="chart-text"><h3>3. Verificación de información sospechosa</h3><p>La verificación es clave en temas tributarios, donde circulan simplificaciones, bulos y mensajes emocionalmente cargados.</p></div><div class="chart-card"><iframe title="Check false news" src="https://datawrapper.dwcdn.net/NB2hE/2/" height="908"></iframe></div></div>
+
+    <div class="conclusion"><h3>Conclusiones de la sección</h3><ul><li>Los intermediarios informativos se diversifican: medios, periodistas, creadores, influencers, plataformas e IA.</li><li>La confianza depende de quién comunica y en qué entorno aparece.</li><li>La cultura tributaria necesita verificación, transparencia y explicación adaptada al canal.</li></ul></div>
+  </div>
+</section>
+
+<section id="otros-datos">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Cuarta sección</p>
+      <h2>OTROS DATOS</h2>
+      <p class="lead">Esta sección reúne datos complementarios sobre consumo informativo juvenil, redes sociales, desinformación, interés político, Twitch, livestreaming político y politainment.</p>
+    </div>
+
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h3>Redes sociales y desinformación</h3>
+        <p>El 49% de los españoles entre 16 y 30 años (frente al 42% de media europeo) dice informarse prioritariamente a través de las redes sociales (y dentro de ellas: Instagram 51%; TikTok 43%; X 36%; YouTube 32%), -solo un 20% acude a la prensa o las plataformas de noticias-. Y más de la mitad (51%) considera haber estado expuesto a desinformación a menudo o muy a menudo, según la última encuesta sobre juventud del Eurobarómetro.</p>
+        <p><a href="https://europa.eu/eurobarometer/api/deliverable/download/file?deliverableId=96909" target="_blank" rel="noopener noreferrer">Ver fuente: Eurobarómetro ↗</a></p>
+      </div>
+
+      <div class="strategy-card">
+        <h3>Interés político y TikTok</h3>
+        <p>Un 89 % de los jóvenes en España (14 y 30 años) aseguran estar interesados “algo” o “mucho” en la política. El 46 % afirman que vieron contenido y opiniones políticas en TikTok -cifra que sube hasta el 63 % entre 14 y 20 años (Encuesta del Consejo de la Juventud de España -CJE-)-.</p>
+        <p><a href="https://www.atresmedia.com/levanta-la-cabeza/actualidad/tiktok-nuevo-escenario-discusion-politica-jovenes_20231127656453b10d39ec0001c221d6.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Ver fuente: TikTok y política joven ↗</a></p>
+      </div>
+
+      <div class="strategy-card">
+        <h3>Twitch, YouTube y contenido político</h3>
+        <p>En el primer trimestre de 2025, el 56 % de los canales con contenido político estaban en Twitch, y si bien por volumen de horas vistas YouTube sigue dominando claramente (Statista 1 y 2), el potencial de Twitch por su penetración en el segmento de edad entre 18 y 34 años es enorme (“Twitch, the platform with the potential to get young people interested in politics”).</p>
+        <p><a href="https://www.uoc.edu/en/news/2024/twitch-politics-communication?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Ver fuente: UOC sobre Twitch y política ↗</a></p>
+      </div>
+
+      <div class="strategy-card">
+        <h3>Political livestreaming</h3>
+        <p>El “political livestreaming” ha crecido espectacularmente: pasando de ~1,7 mil millones de horas vistas por trimestre en 2022–2023 a ~2,9 mil millones en 2024 y principios de 2025 (Streaming News).</p>
+        <p><a href="https://streamscharts.com/news/political-livestream-content-2022-2025?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Ver fuente: StreamsCharts ↗</a></p>
+      </div>
+
+      <div class="strategy-card wide-card" style="grid-column: 1 / -1;">
+        <h3>Politainment</h3>
+        <p>En términos generales puede hablarse de una tendencia al “politainment” (mezcla de política y entretenimiento) en redes.</p>
+        <p><a href="https://es.wikipedia.org/wiki/Politainment" target="_blank" rel="noopener noreferrer">Ver fuente: Politainment ↗</a></p>
+      </div>
+    </div>
+
+    <div class="conclusion">
+      <h3>Conclusión de la sección</h3>
+      <ul>
+        <li>La información política y social dirigida a jóvenes circula cada vez más en redes, plataformas de vídeo y entornos de entretenimiento.</li>
+        <li>La cultura tributaria debe competir en esos espacios con formatos híbridos: información, opinión, directo, humor, comunidad y entretenimiento.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="mensaje">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Quinta sección</p>
+      <h2>CUANDO EL MEDIO CAMBIA, EL TIPO DE MENSAJE TIENE QUE CAMBIAR</h2>
+      <p class="lead">Esta sección incorpora ejemplos reales del debate público en redes sobre youtubers, Andorra y pago de impuestos. La idea no es solo explicar datos, sino diseñar mensajes capaces de disputar argumentos, emociones y marcos culturales.</p>
+    </div>
+
+    <div class="strategy-grid">
+      <a class="strategy-card link-card" href="https://x.com/i/status/1495511181670465539" target="_blank" rel="noopener noreferrer">
+        <h3>Morad · X / Twitter</h3>
+        <p>Abrir comentario o vídeo en una pestaña nueva para analizar tono, emoción, lenguaje y reacción social.</p>
+        <span>Ver enlace externo ↗</span>
+      </a>
+      <a class="strategy-card link-card" href="https://www.instagram.com/reel/DGbhOeWNZxq/" target="_blank" rel="noopener noreferrer">
+        <h3>Dani Martín · Instagram</h3>
+        <p>Abrir reel en una pestaña nueva para observar cómo se construye una posición moral sobre pagar impuestos.</p>
+        <span>Ver enlace externo ↗</span>
+      </a>
+      <a class="strategy-card link-card" href="https://www.youtube.com/watch?v=OaX1b-jIshA" target="_blank" rel="noopener noreferrer">
+        <h3>UTBH · YouTube</h3>
+        <p>Abrir vídeo en una pestaña nueva para analizar el debate sobre Andorra, fiscalidad, Estado y creadores.</p>
+        <span>Ver enlace externo ↗</span>
+      </a>
+    </div>
+
+    <div class="section-head communication-space">
+      <p class="eyebrow">Espacio de análisis aplicado</p>
+      <h2>LA DISCUSIÓN SOBRE LOS YOUTUBERS Y ANDORRA: QUÉ MENSAJES PUEDEN FUNCIONAR</h2>
+      <p class="lead">Partiendo del análisis del vídeo de UTBH y del debate generado en medios y redes, esta discusión suele estar plagada de emociones, insultos y desinformación por ambas partes. La clave comunicativa no es repetir consignas, sino elevar el nivel del debate con argumentos verificables, comparaciones reales y preguntas incómodas que obliguen a pensar.</p>
+    </div>
+
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h3>1. Qué se dijo en el debate</h3>
+        <p>La postura pro-impuestos defendía que pagar impuestos es una cuestión de justicia y patriotismo. La postura pro-Andorra sostenía que tipos máximos altos son abusivos y que Andorra ofrece seguridad y empleo. Ambas posiciones aparecieron muy polarizadas, con fuerte carga emocional y recurriendo a falacias argumentativas.</p>
+      </div>
+
+      <div class="strategy-card">
+        <h3>2. Argumentos y falacias pro-impuestos</h3>
+        <p><strong>Argumentos:</strong> Pagar impuestos es una cuestión de justicia y patriotismo.</p>
+        <p><strong>Mentiras / Falacias:</strong></p>
+        <ul>
+          <li><strong>Falacia Ad Hominem:</strong> Atacar a quienes se van llamándolos simplemente “avariciosos” o faltos de empatía, en lugar de debatir sobre la acusación de confiscatoriedad de los impuestos.</li>
+          <li><strong>Cherry Picking y Hombre de Paja:</strong> Utilizar el caso de un paciente andorrano que necesitó un trasplante de riñón en España para insinuar que Andorra “te deja morir”. La realidad es que Andorra, por su tamaño, no tiene infraestructura para trasplantes, pero tiene convenios y paga íntegramente la factura a la sanidad española. No parasita el dinero de los contribuyentes españoles en estos casos.</li>
+        </ul>
+      </div>
+
+      <div class="strategy-card">
+        <h3>3. Argumentos y falacias anti-Impuestos / Pro-Andorra</h3>
+        <p><strong>Argumentos:</strong> Un IRPF del 54% (como el tipo máximo en la Comunidad Valenciana) es abusivo. Andorra es más segura y tiene pleno empleo.</p>
+        <p><strong>Mentiras / Falacias:</strong></p>
+        <ul>
+          <li><strong>Hombre de Paja:</strong> Reducir todo el gasto público español a anécdotas como “catas de chocolate”, “festivales de perreo” o el uso del avión Falcon presidencial. Esto es una manipulación burda, ya que la inmensa mayoría del presupuesto español se destina a pensiones, sanidad y educación.</li>
+          <li><strong>Falacia Ad Hominem:</strong> Atacar a los defensores de los impuestos alegando que hablan desde la “putísima envidia” o insultando su aspecto físico, sin rebatir el fondo del estado de bienestar.</li>
+        </ul>
+      </div>
+
+      <div class="strategy-card wide-card" style="grid-column: 1 / -1;">
+        <h3>4. Posibles argumentos sólidos para criticar el éxodo a Andorra</h3>
+        <p><strong>Ruptura del contrato social y extracción de riqueza:</strong> estos creadores de contenido han utilizado infraestructuras públicas pagadas por los españoles (sanidad, educación, seguridad) durante su infancia y juventud a coste cero. Sin embargo, justo cuando alcanzan su pico de riqueza, se marchan. Además, su público (quien genera sus ingresos por publicidad) reside mayoritariamente en España, por lo que extraen capital del mercado español para inyectar sus impuestos en un país extranjero.</p>
+        <p><strong>La verdadera razón es puramente egoísta:</strong> un youtuber que gane 1 millón de euros netos pagara en España (tipo máximo 45%-54%) unos 430.000 - 500.000 € en impuestos. en Andorra (tipo máximo del 10%) pagará unos 96.800 €.</p>
+        <p><strong>Andorra no es para cualquiera:</strong> Para entrar y abrir una empresa (residencia activa), Andorra exige depositar 50.000 euros de fianza a fondo perdido más 12.000 por dependiente; la residencia pasiva exige una inversión de 1 millón en activos; como trabajador si pierdes tu trabajo y tus ingresos allí, pierdes la residencia.</p>
+        <p><strong>La falacia de los servicios públicos: La sanidad de copago:</strong> Los youtubers afirman que “allí la sanidad es igual pero pagando menos”. Esto es falso; funciona por copago y requiere seguros privados:</p>
+        <ul>
+          <li><strong>En España (Coste 0€ en el uso):</strong> Un marcapasos, una apendicitis o 10 días en la UCI cuestan 0 euros al paciente en el momento de necesitarlos.</li>
+          <li><strong>En Andorra (Copago del 10% al 25%):</strong> La seguridad social (CASS) solo cubre el 75% de pruebas y medicamentos, y el 90% de hospitalizaciones. Por 10 días en la UCI, el paciente andorrano se despierta debiendo unos 600 euros de factura bruta.</li>
+          <li><strong>El impuesto oculto (La mútua):</strong> Para no arruinarse con estos copagos, los residentes deben pagar un seguro privado mensual que cuesta entre 480 y 1.500 euros anuales.</li>
+        </ul>
+        <p><strong>El problema del “Polizón” y la dependencia extranjera:</strong> El modelo andorrano solo sobrevive porque tiene de vecinos a gigantes que pagan altos impuestos. Si un parto se complica de extrema gravedad y el bebé necesita una UCI Neonatal de Nivel III, o si un paciente requiere cirugía de trauma hipercompleja, Andorra no tiene infraestructura para salvarles. Tienen que evacuarlos en helicóptero a hospitales públicos de España o Francia. Delegan lo más caro y difícil.</p>
+        <p><strong>El colapso matemático si España copiara a Andorra:</strong> La presión fiscal en España es del 36,7% del PIB, y en Andorra del 27,5%. Si España bajara sus impuestos al nivel andorrano, el Estado perdería 134.000 millones de euros anuales de golpe (un 9,2% de su PIB). Para cuadrar las cuentas, el Gobierno tendría que recortar el gasto público un 25%. Eso equivale a cerrar el 100% de la Sanidad Pública española (todos los hospitales, centros de salud, médicos y urgencias del país, que cuestan unos 90.000 millones) y aún faltarían 40.000 millones más por recortar en áreas como educación o pensiones.</p>
+      </div>
+    </div>
+
+    <div class="conclusion">
+      <h3>Qué mensajes pueden funcionar mejor</h3>
+      <ul>
+        <li>No empezar insultando: empezar preguntando quién sostiene el sistema si se van los que más ganan.</li>
+        <li>Desmontar la falsa dicotomía: pagar menos no implica automáticamente vivir mejor.</li>
+        <li>Recordar que muchos servicios públicos no se valoran hasta que hacen falta.</li>
+        <li>Explicar que un microestado no equivale a un país grande con millones de habitantes.</li>
+        <li>Plantear dilemas reales: si bajamos impuestos drásticamente, ¿qué recortamos?</li>
+        <li>Transformar el debate moral en debate estructural y económico.</li>
+      </ul>
+    </div>
+
+    <div class="conclusion">
+      <h3>Conclusiones de la sección</h3>
+      <ul><li>No existe un único mensaje válido para todos los canales.</li><li>La cultura tributaria debe adaptarse a formatos, lenguajes y niveles de atención diferentes.</li><li>El caso de youtubers, Andorra e impuestos puede servir para pasar del debate emocional a una explicación pública más informada.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="cierre">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">Cierre</p><h2>Conclusión general</h2><p class="lead">La cultura tributaria se forma también en el ecosistema mediático donde los jóvenes descubren, interpretan y comparten información.</p></div>
+    <div class="conclusion"><h3>Ideas finales</h3><ul><li>Comprender dónde se informan los jóvenes ayuda a explicar por qué ciertos discursos fiscales tienen más impacto.</li><li>Las plataformas digitales pueden simplificar, distorsionar o acercar los temas tributarios.</li><li>Una comunicación fiscal eficaz debe ser clara, visual, verificable y adaptada al canal.</li><li>Hablar de impuestos también es hablar de confianza, pertenencia, servicios públicos y responsabilidad colectiva.</li></ul></div>
+  </div>
+</section>
+
+<footer><p>Medios de comunicación y cultura tributaria · Presentación web</p></footer>
+
+<script>
+  window.addEventListener("message", function(a) {
+    if (a.data && a.data["datawrapper-height"]) {
+      var e = document.querySelectorAll("iframe");
+      for (var t in a.data["datawrapper-height"]) {
+        for (var i = 0; i < e.length; i++) {
+          if (e[i].contentWindow === a.source && !e[i].classList.contains("no-resize")) {
+            e[i].style.height = a.data["datawrapper-height"][t] + "px";
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
